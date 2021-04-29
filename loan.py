@@ -134,7 +134,6 @@ class Schedule():
         self.calendar = Calendar()
 
     def generatePaymentSchedule(self, loan, years=0, months=0):
-        print(loan.id)
         if years > 0:
             months += years*12
         dateFormat = "%m/%d/%Y"
@@ -155,5 +154,4 @@ class Schedule():
             if not loan.hasGracePeriod:
                 paymentDate = self.calendar.adjustDate(paymentDate)
             payment = Payment(loan.id, paymentDate, loan.monthlyPaymentAmount)
-            print(debitDates, paymentDate)
             yield debits, payment

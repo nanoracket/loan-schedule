@@ -7,9 +7,15 @@ The main.py file takes in the user input, performs the requested task, and print
 The loan.py file contains all classes relevant to producing the schedule for a loan.
 The database.py file contains the database class which is the only class to directly interact with the database
 
+
+The database has 3 tables: loans, debits, and payments
+
 ## How to use
 
-First run the main file with -i to populate the database with the payments and debits for the inputted loans
+Only prerequisite is python3.6, no 3rd party libraries were used
+
+
+First run the main.py file with -i to populate the database with the payments and debits for the inputted loans
 ```
 python3 main.py -i
 ```
