@@ -37,7 +37,7 @@ class Database():
         self.con.commit()
 
     def savePaymentAndDebits(self, debits, payment):
-        if self.queryPayments(payment.paymentDate):
+        if self.queryPayments(payment.paymentDate, payment.loanId):
             return
         self.cur.execute("INSERT INTO payments VALUES (?, ?, ?, ?)",
                          (payment.id, payment.loanId,
@@ -64,8 +64,8 @@ class Database():
         self.cur.execute("SELECT id FROM loans WHERE id = ?", (loanId,))
         return self.cur.fetchone()
 
-    def queryPayments(self, paymentDate):
-        self.cur.execute("SELECT id FROM payments WHERE paymentDate = ?", (paymentDate,))
+    def queryPayments(self, paymentDate, loanId):
+        self.cur.execute("SELECT id FROM payments WHERE paymentDate = ? AND loanId = ?", (paymentDate, loanId))
         return self.cur.fetchone()
 
     def queryLoanDebits(self, loanId):
